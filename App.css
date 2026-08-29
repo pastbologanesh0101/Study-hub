@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --paper: #faf7f0;
+  --paper-line: #e4dcc8;
+  --ink: #1b2a4a;
+  --ink-soft: #4a5a7a;
+  --rule-red: #b5573f;
+  --accent: #d9a441;
+  --accent-dark: #b8841f;
+  --sage: #6b8f71;
+  --card-shadow: 0 1px 2px rgba(27, 42, 74, 0.06), 0 4px 16px rgba(27, 42, 74, 0.06);
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 27px,
+    var(--paper-line) 28px
+  );
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: 'Source Serif 4', Georgia, serif;
+  color: var(--ink);
+  margin: 0 0 0.3em;
+}
+
+button { font-family: inherit; cursor: pointer; }
+input, select, textarea { font-family: inherit; }
+
+/* ---------- Auth screen ---------- */
+
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.auth-card {
+  background: #fffdf8;
+  border: 1px solid var(--paper-line);
+  border-left: 4px solid var(--rule-red);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.brand-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Source Serif 4', serif;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+.brand-mark.small { width: 36px; height: 36px; font-size: 0.85rem; }
+
+.auth-card h1 { font-size: 1.6rem; }
+.tagline { color: var(--ink-soft); font-size: 0.92rem; margin-bottom: 24px; line-height: 1.5; }
+
+.auth-card form label,
+.note-form label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.auth-card input,
+.note-form input,
+.note-form select,
+.note-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--paper-line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 400;
+  text-transform: none;
+}
+
+.auth-card input:focus,
+.note-form input:focus,
+.note-form select:focus,
+.note-form textarea:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.btn-primary {
+  background: var(--ink);
+  color: var(--paper);
+  border: none;
+  border-radius: 6px;
+  padding: 11px 18px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  width: 100%;
+  transition: background 0.15s ease;
+}
+.btn-primary:hover:not(:disabled) { background: var(--accent-dark); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--ink);
+  border: 1.5px solid var(--ink);
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-top: 12px;
+}
+.btn-secondary:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--rule-red);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0;
+  margin-top: 18px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.error-banner {
+  background: #fbeae6;
+  border: 1px solid var(--rule-red);
+  color: #8a3624;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+}
+
+/* ---------- App shell ---------- */
+
+.app-shell { max-width: 920px; margin: 0 auto; padding: 32px 24px 80px; }
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--ink);
+}
+.app-header h1 { font-size: 1.4rem; }
+.muted { color: var(--ink-soft); font-size: 0.85rem; margin: 0; }
+.logout { margin-left: auto; margin-top: 0; }
+
+.app-main { display: grid; gap: 36px; }
+
+.count { color: var(--ink-soft); font-weight: 400; font-size: 0.9em; }
+
+.empty-state {
+  color: var(--ink-soft);
+  font-style: italic;
+  padding: 20px 0;
+}
+
+/* ---------- Note form ---------- */
+
+.note-form {
+  background: #fffdf8;
+  border: 1px solid var(--paper-line);
+  border-left: 4px solid var(--sage);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 28px;
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+/* ---------- Note cards ---------- */
+
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 18px;
+}
+
+.note-card {
+  background: #fffdf8;
+  border: 1px solid var(--paper-line);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.note-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.subject-tag {
+  display: inline-block;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.icon-btn:hover { color: var(--rule-red); }
+
+.note-card h3 { font-size: 1.08rem; margin-bottom: 12px; }
+
+.eyebrow {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 4px;
+}
+
+.note-summary p {
+  margin: 0 0 10px;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.note-full-content {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  border-top: 1px dashed var(--paper-line);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.quiz-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--ink);
+}
+.quiz-list li { margin-bottom: 6px; }
+
+@media (max-width: 560px) {
+  .field-row { grid-template-columns: 1fr; }
+  .app-header { flex-wrap: wrap; }
+  .logout { margin-left: 0; }
+}
